@@ -1,0 +1,29 @@
+{
+  "compaies": [
+    {
+      "_id": "1",
+      "name": "Dynazzy",
+      "establishment_date": {
+        "$date": "1992-02-11T04:54:32.000Z"
+      },
+      "address": [{}],
+      "phone": "4615689816",
+      "website": "https://bravesites.com",
+      "auth": true,
+      "status": false
+    },
+    {
+      "_id": "2",
+      "name": "Dynazzy",
+      "establishment_date": {
+        "$date": "1992-02-11T04:54:32.000Z"
+      },
+      "address": [{}],
+      "phone": "4615689816",
+      "website": "https://bravesites.com",
+      "auth": true,
+      "status": false
+    }
+    
+  ]
+}
