@@ -1,4 +1,5 @@
 <template>
+  <Header/>
   <h2>company details</h2>
   <div class="company-details">
     <div class="top">
@@ -47,13 +48,21 @@
       </div>
     </div>
   </div>
+  <Footer/>
 </template>
 
 <script>
 import { onMounted, ref } from "vue";
 
+import Header from "../../components/candidate/Header.vue";
+import Footer from "../../components/candidate/Footer.vue";
+
 export default {
   props: ["id"],
+  components: {
+    Header,
+    Footer,
+  },
 
   // data() {
   //   return {

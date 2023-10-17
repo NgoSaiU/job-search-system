@@ -1,4 +1,5 @@
 <template>
+  <Header/>
   <h1>JOB LIST</h1>
   <div class="frame">
     <div class="company">
@@ -32,7 +33,12 @@
 
         <div class="contain_job" v-if="jobs">
           <div class="item_job" v-for="job in jobs" :key="job.id">
-            <div class="frame_job"></div>
+            <!-- <div class="frame_job" >{{ companyNames[job.company_id].imgCompanies }}</div> -->
+
+            <div v-if="companyNames[job.company_id].imgCompanies">
+
+              <img class="frame_job" :src="companyNames[job.company_id].imgCompanies" alt="img">
+            </div>
 
             <div class="job-title">
 
@@ -43,7 +49,7 @@
 
             <!-- <div class="company-name">Công ty {{ job.company_id }}</div> -->
             <div class="company-name" v-if="companyNames[job.company_id]">
-              Công ty: {{ companyNames[job.company_id] }}
+              Công ty: {{ companyNames[job.company_id].companyName }}
             </div>
 
             <!-- <div class="company-name">Công ty {{ getNameCompany(job.company_id) }}</div> -->
@@ -60,16 +66,24 @@
       </div>
     </div>
   </div>
+  <Footer/>
 </template>
 
 <script>
 
 import axios from "axios";
+import Header from "../../components/candidate/Header.vue";
+import Footer from "../../components/candidate/Footer.vue";
 export default {
+  components: {
+    Header,
+    Footer
+  },
   data() {
     return {
       jobs: [],
       companyNames: {},
+      imgcompany: {},
     };
   },
 
@@ -99,6 +113,8 @@ export default {
         this.jobs.forEach((job, index) => {
           if (companyNames[index]) {
             this.companyNames[job.company_id] = companyNames[index];
+            this.companyNames[job.company_id] = companyNames[index];
+
           } else {
             this.companyNames[job.company_id] = "Tên công ty không tồn tại";
           }
@@ -115,8 +131,11 @@ export default {
             "http://localhost:8080/api/companies/" + idCompany
           );
           const companyName = response.data.name;
+          const imgCompanies = response.data.logo;
           console.log("Ten cong ty", companyName);
-          return companyName;
+          return {
+            companyName, imgCompanies
+          };
         } else {
           return null;
         }

@@ -63,6 +63,10 @@
               Bạn chưa đăng ký ?
               <router-link :to="{ name: 'register' }">Đăng ký</router-link>
             </p>
+            <p>
+              Đăng nhập với tư cách nhà tuyển dụng ?
+              <router-link :to="{ name: 'loginEm' }">Đăng nhập nhà tuyển dụng</router-link>
+            </p>
             <p>Hoặc đăng nhập bằng:</p>
             <button type="button" class="btn btn-link btn-floating mx-1">
               <i class="fa-brands fa-facebook" style="color: #000000"></i>
@@ -126,7 +130,7 @@ export default {
 
         // await router.push("/candidate");
         // this.$router.go(-1)
-        await router.push("/");
+        await router.push({name:"home"});
   
 
       } catch (error) {

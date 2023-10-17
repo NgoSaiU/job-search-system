@@ -29,6 +29,7 @@ import InterviewCalendar from '../components/candidate/InterviewCalendar.vue' //
 
 //employer
 import DashBoard from '../views/employer/DashBoard.vue'
+import SlidebarEmployer from '../views/employer/SlidebarEmployer.vue'
 import Post from '../views/employer/Post.vue'
 import AddPost from '../views/employer/AddPost.vue'
 import CVs from '../views/employer/CVs.vue'
@@ -100,18 +101,23 @@ const routes = [
 
 
   //candidate
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView,
-    children: [
-      {
-        path: 'about',
-        // component: () => import('@/views/About.vue'), // Ví dụ cho một trang khác
-      },
-      // Các route khác ở đây
-    ],
+  // {
+  //   // path: '/',
+  //   // name: 'home',
+  //   // component: HomeView,
+  //   // children: [
+  //   //   {
+  //   //     path: 'about',
+  //   //     // component: () => import('@/views/About.vue'), // Ví dụ cho một trang khác
+  //   //   },
+  //   //   // Các route khác ở đây
+  //   // ],
 
+  // },
+  {
+  path: '/home',
+  name: 'home',
+  component: HomeView,
   },
 
   {
@@ -157,7 +163,7 @@ const routes = [
 
   // },
   {
-    path: '/login',
+    path: '/',
     name: 'login',
     component: Login,
 
@@ -228,6 +234,12 @@ const routes = [
     path: '/dashboard',
     name: 'dashboard',
     component: DashBoard,
+
+  },
+  {
+    path: '/slidebarEmployer',
+    name: 'slidebarEmployer',
+    component: SlidebarEmployer,
 
   },
   {

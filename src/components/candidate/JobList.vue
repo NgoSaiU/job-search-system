@@ -1,27 +1,33 @@
 <template>
-  <div class="box">
-    <div class="job-list">
-      <div class="container">
-        <div class="container-group">
-          <div class="header-left">Việc Làm Tốt Nhất</div>
-          <div class="header-right">Xem tất cả</div>
-        </div>
+  <div class="container">
+    <div class="box">
+      <div class="job-list">
+        <div class="container">
+          <div class="container-group">
+            <div class="header-left">Việc Làm Tốt Nhất</div>
+            <div class="header-right">Xem tất cả</div>
+          </div>
 
-        <div class="contain" v-if="jobs">
-          <div class="item" v-for="job in jobs" :key="job.id">
-            <div class="jobIn4">
-              <div class="frame"></div>
-              <div class="job-title">
-                <router-link :to="{ name: 'jobsDetail', params: { id: job._id } }">
-                  {{ job.name }}
-                </router-link>
-              </div>
-              <div class="company-name">{{ companyNames[job.company_id] }}</div>
-              <div class="frame-location">
-                <div class="location">{{ job.location[0] }}</div>
-              </div>
-              <div class="frame-salary">
-                <div class="salary">{{ job.salary }}</div>
+          <div class="contain" v-if="jobs">
+            <div class="item" v-for="job in jobs" :key="job.id">
+              <div class="jobIn4">
+                <img class="frame" src="{{imgCompanies[job.company_id]}}" alt="img">
+                <div class="job-title">
+                  <router-link
+                    :to="{ name: 'jobsDetail', params: { id: job._id } }"
+                  >
+                    {{ job.name }}
+                  </router-link>
+                </div>
+                <div class="company-name">
+                  {{ companyNames[job.company_id] }}
+                </div>
+                <div class="frame-location">
+                  <div class="location">{{ job.location[0].city }}</div>
+                </div>
+                <div class="frame-salary">
+                  <div class="salary">{{ job.salary }}</div>
+                </div>
               </div>
             </div>
           </div>
@@ -34,13 +40,13 @@
 <script >
 import axios from "axios";
 
-
 //xử lý state, nếu đã đăng nhập rồi thì mới được phép kiểm tra api
 export default {
   data() {
     return {
       jobs: [],
       companyNames: {},
+      imgCompanies: {},
     };
   },
 
@@ -72,15 +78,38 @@ export default {
           if (companyNames[index]) {
             this.companyNames[job.company_id] = companyNames[index];
           } else {
-            this.companyNames[job.company_id] = "Tên công ty không tồn tại";
+            this.companyNames[job.company_id] = " ";
           }
         });
+
+
+
+
+        // Tạo một mảng promises để gọi getNaCompany cho tất cả công việc
+        const promisess = this.jobs.map((job) =>
+          this.getImgCompany(job.company_id)
+        );
+
+        //Sử lý bất đồng bộ
+        // Sử dụng Promise.all để đợi cho tất cả promises hoàn thành
+        const imgCompanies = await Promise.all(promisess);
+
+        // Gán tên công ty cho mỗi công việc
+        this.jobs.forEach((job, index) => {
+          if (imgCompanies[index]) {
+            this.imgCompanies[job.company_id] = imgCompanies[index];
+          } else {
+            this.imgCompanies[job.company_id] = null;
+          }
+        });
+
+
+
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     },
-    
-
+    //lay 
     async getNameCompany(idCompany) {
       try {
         if (idCompany) {
@@ -90,6 +119,23 @@ export default {
           const companyName = response.data.name;
           console.log("Ten cong ty", companyName);
           return companyName;
+        } else {
+          return null;
+        }
+      } catch (err) {
+        console.error("Error fetching data:", err);
+        return null;
+      }
+    },
+    async getImgCompany(idCompany) {
+      try {
+        if (idCompany) {
+          const response = await axios.get(
+            "http://localhost:8080/api/companies/" + idCompany
+          );
+          const imgCompany = response.data.logo;
+          console.log("Logo cong ty", imgCompany);
+          return imgCompany;
         } else {
           return null;
         }

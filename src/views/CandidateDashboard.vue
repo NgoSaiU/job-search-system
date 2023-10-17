@@ -1,8 +1,10 @@
 <template>
   <div>
-    <Header />
-    <router-view />
-    <Footer />
+    <!-- <Header /> -->
+        <router-link :to="{ name: 'jobs' }">sdf</router-link>
+    <!-- <router-view /> -->
+    <h2>đây là trang candidatedasgh bỏa</h2>
+    <!-- <Footer /> -->
   </div>
 </template>
 

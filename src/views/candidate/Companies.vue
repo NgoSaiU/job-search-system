@@ -1,54 +1,63 @@
 <template>
-  <h2>List companies</h2>
-  <div v-if="error">{{ error }}</div>
-  <div class="companies">
-    <div class="top">
-      <p class="h1">Khám Phá Văn Hóa Công Ty</p>
-      <p class="p">
-        Tìm hiểu văn hóa công ty và chọn cho bạn nơi làm việc phù hợp nhất
-      </p>
-      <div class="frame-search">
-        <div class="button-serch">
-          <div class="rectangle-search">
-            <div class="btn-search">Tìm kiếm</div>
+  <Header />
+  <div class="container">
+    <h2>List companiess</h2>
+    <div v-if="error">{{ error }}</div>
+    <div class="companies">
+      <div class="top">
+        <p class="h1">Khám Phá Văn Hóa Công Ty</p>
+        <p class="p">
+          Tìm hiểu văn hóa công ty và chọn cho bạn nơi làm việc phù hợp nhất
+        </p>
+        <div class="frame-search">
+          <div class="button-serch">
+            <div class="rectangle-search">
+              <div class="btn-search">Tìm kiếm</div>
+            </div>
           </div>
-        </div>
-        <div class="icon-magnifying-wrapper">
-          <div class="icon-magnifying">
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <div class="icon-magnifying-wrapper">
+            <div class="icon-magnifying">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="div">
-      <div class="jobs-list">
-        <div class="overlap">
-          <div class="frame">
-            <div class="overlap-group">
-              <div class="header">Danh Sách Công Ty</div>
+      <div class="div">
+        <div class="jobs-list">
+          <div class="overlap">
+            <div class="frame">
+              <div class="overlap-group">
+                <div class="header">Danh Sách Công Ty</div>
+              </div>
+              <div class="rectangle"></div>
             </div>
-            <div class="rectangle"></div>
-          </div>
 
-          <div class="contain">
-            <div v-if="companies">
-              <!-- <div v-for="(company,index) in companies" :key="index"> -->
-              <div v-for="company in companies" :key="company.id">
-                <div class="item">
-                  <div class="company">
-                    <div class="frame-company"></div>
-                    <div class="title">
-                      <router-link :to="{name: 'companyDetail', params: { id: company._id }}">
-                        {{ company.name }}
-                      </router-link>
-                    </div>
-                    <div class="places">Trụ sở chính: {{ company.address }}</div>
-                    <button class="button">
-                      <div class="follow">
-                        <div class="btn-follow">Theo dõi</div>
+            <div class="contain">
+              <div v-if="companies">
+                <div v-for="company in companies" :key="company.id">
+                  <div class="item">
+                    <div class="company">
+                      <div class="frame-company"></div>
+                      <div class="title">
+                        <router-link
+                          :to="{
+                            name: 'companyDetail',
+                            params: { id: company._id },
+                          }"
+                        >
+                          {{ company.name }}
+                        </router-link>
                       </div>
-                    </button>
+                      <div class="places">
+                        Trụ sở chính: {{ company.address }}
+                      </div>
+                      <button class="button">
+                        <div class="follow">
+                          <div class="btn-follow">Theo dõi</div>
+                        </div>
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -58,17 +67,25 @@
       </div>
     </div>
   </div>
+
+  <Footer />
 </template>
 
 <script>
 // import getCompanies from "../../composables/getCompanies.js";
 // import ListCompanies from "../../components/candidate/ListCompanies.vue";
+import Header from "../../components/candidate/Header.vue";
+import Footer from "../../components/candidate/Footer.vue";
 
 import { onMounted } from "vue";
 import axios from "axios";
 
 export default {
   name: "companies",
+  components: {
+    Header,
+    Footer,
+  },
 
   data() {
     return {
@@ -102,10 +119,6 @@ export default {
       return new Date(date).toLocaleDateString();
     },
   },
-
-  components: {
-    // ListCompanies,
-  },
 };
 </script>
 
@@ -129,7 +142,7 @@ export default {
 .companies .div {
   background-color: #ffffff;
   width: 1440px;
-  height: 2100px;
+  min-height: 2100px;
   /* position: relative; */
   position: relative;
 }

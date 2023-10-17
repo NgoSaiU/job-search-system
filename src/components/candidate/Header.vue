@@ -1,4 +1,5 @@
 <template>
+  <div class="container">
   <div class="box">
     <div class="header">
       <div class="overlap-group">
@@ -56,12 +57,12 @@
             <div class="text-wrapper-6">
               <router-link :to="{ name: '' }">Tạo CV</router-link>
             </div>
-
+            
             <router-link :to="{ name: 'loginEm' }">
               <div class="text-wrapper-7">Tuyển dụng?</div>
             </router-link>
-
-            <div class="group-3" v-if="showUsername==true">
+            
+            <div class="group-3" v-if="showUsername==false">
               <router-link :to="{ name: 'login' }"
                 ><div class="text-wrapper-5">Đăng nhập</div>
               </router-link>
@@ -92,11 +93,13 @@
       </div>
     </div>
   </div>
+</div>
 </template>
 
 <script >
 import { onMounted, ref } from "vue";
 import { useStore } from "vuex";
+import { useRouter } from "vue-router";
 
 export default {
   name: "Box",
@@ -104,6 +107,7 @@ export default {
   setup() { 
     const username = ref("");
     const store = useStore();
+    const router = useRouter();
     const showUsername = ref(store.state.authenticated);
 
     const logout = async () => {
@@ -116,7 +120,10 @@ export default {
         console.log("dang xuat thanh cong");
 
         await store.dispatch("setAuth", false);
-        showUsername = store.state.authenticated;
+        // showUsername = store.state.authenticated;
+
+        await router.push({name:"login"});
+        
       } catch (e) {
         console.log(e);
         console.log("loi đang xuất");

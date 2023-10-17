@@ -1,6 +1,7 @@
 <template>
-  <h1>Cài đặt thông tin cá nhân</h1>
   <div class="container">
+    <Header/>
+    <h1>Cài đặt thông tin cá nhân</h1>
     <div class="row justify-content-md-center">
       <div class="col col-lg-1"></div>
       <div class="w-50">
@@ -46,14 +47,21 @@
       <div class="col col-lg-1"></div>
     </div>
   </div>
+  <Footer/>
 </template>
 
 <script>
 import axios from "axios";
 import { useStore } from "vuex";
+import Header from "./Header.vue";
+import Footer from "./Footer.vue";
 
 export default {
-  
+
+  components: {
+    Header,
+    Footer
+  },
 
   data() {
     return {

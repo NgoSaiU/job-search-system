@@ -3,7 +3,7 @@
 		<!-- Sidebar -->
 		<Sidebar /> 
 		<!-- Content -->
-		<router-view />
+		<!-- <router-view /> -->
 	</div>
 </template>
 

@@ -1,21 +1,23 @@
 <template>
-  <div class="frame">
-    <div class="rectangle" />
-    <img class="img" alt="Frame"  />
-    <div class="text-wrapper">Giới thiệu</div>
-    <div class="div">Liên hệ</div>
-    <div class="text-wrapper-2">Chính sách bảo mật</div>
-    <div class="text-wrapper-3">Điều khoản dịch vụ</div>
-    <div class="text-wrapper-4">Đăng tin tuyển dụng</div>
-    <div class="text-wrapper-5">Tìm kiếm hồ sơ</div>
-    <div class="text-wrapper-6">HCM</div>
-    <div class="text-wrapper-7">Hà Nội</div>
-    <div class="text-wrapper-8">Cần Thơ</div>
-    <div class="text-wrapper-9">Về chúng tôi</div>
-    <p class="p">Dành cho nhà tuyển dụng</p>
-    <p class="text-wrapper-10">Việc làm theo khu vực</p>
-    <p class="text-wrapper-11">© 2023 | Ngô Sài Ủ - Nguyễn Tấn Trụ</p>
-    <img class="logo" alt="Logo" src="..\..\assets\logo.png" />
+  <div class="container">
+    <div class="frame">
+      <div class="rectangle" />
+      <img class="img" alt="Frame" />
+      <div class="text-wrapper">Giới thiệu</div>
+      <div class="div">Liên hệ</div>
+      <div class="text-wrapper-2">Chính sách bảo mật</div>
+      <div class="text-wrapper-3">Điều khoản dịch vụ</div>
+      <div class="text-wrapper-4">Đăng tin tuyển dụng</div>
+      <div class="text-wrapper-5">Tìm kiếm hồ sơ</div>
+      <div class="text-wrapper-6">HCM</div>
+      <div class="text-wrapper-7">Hà Nội</div>
+      <div class="text-wrapper-8">Cần Thơ</div>
+      <div class="text-wrapper-9">Về chúng tôi</div>
+      <p class="p">Dành cho nhà tuyển dụng</p>
+      <p class="text-wrapper-10">Việc làm theo khu vực</p>
+      <p class="text-wrapper-11">© 2023 | Ngô Sài Ủ - Nguyễn Tấn Trụ</p>
+      <img class="logo" alt="Logo" src="..\..\assets\logo.png" />
+    </div>
   </div>
 </template>
 
@@ -36,7 +38,7 @@ export default {
 }
 
 .frame .rectangle {
-  background-color: #f3f3f3;
+  background-color: #c0baba;
   height: 439px;
   position: relative;
   width: 1440px;

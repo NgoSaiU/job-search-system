@@ -1,4 +1,5 @@
 <template>
+  <Header/>
   <div class="box">
     <div class="job-detail">
       <div class="job-header">
@@ -48,14 +49,20 @@
       </div>
     </div>
   </div>
+  <Footer/>
 </template>
 
 
 <script>
 import { onMounted, ref } from "vue";
+import Header from "../../components/candidate/Header.vue";
+import Footer from "../../components/candidate/Footer.vue";
 export default {
 
   props:['id'],
+  components: {
+    Header,Footer
+  },
 
   // data() {
   //   return {
@@ -121,7 +128,7 @@ export default {
 .box {
     position: relative;
     width: 1440px;
-    height: 1571px;
+    height: 644px;
 }
 
 .box .job-detail {

@@ -4,7 +4,7 @@
       <div class="col col-lg-1"></div>
       <div class="w-50">
         <form class="bg-light w-3 h-3" @submit.prevent="submit">
-          <h1 class="h3 mb-3 mt-2 fw-normal">Vui Lòng Đăng Nhập Với Tư Cách Nhà Tuyển Dụng</h1>
+          <h1 class="h3 mb-3 mt-2 fw-normal">Đăng Nhập Với Tư Cách Nhà Tuyển Dụng</h1>
 
           <!-- Email input -->
           <div class="form-outline mb-4">
@@ -126,7 +126,7 @@ export default {
         console.log(content);
 
         // await router.push("/app");
-        await router.push("/dashboard");
+        await router.push("/slidebarEmployer");
 
         // this.$router.push('/dashboard');
 
